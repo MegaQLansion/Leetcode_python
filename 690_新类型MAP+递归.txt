@@ -1,0 +1,41 @@
+"""
+# Employee info
+class Employee(object):
+    def __init__(self, id, importance, subordinates):
+        # It's the unique id of each node.
+        # unique id of this employee
+        self.id = id
+        # the importance value of this employee
+        self.importance = importance
+        # the id of direct subordinates
+        self.subordinates = subordinates
+"""
+class Solution(object):
+    def getImportance(self, employees, id):
+        """
+        :type employees: Employee
+        :type id: int
+        :rtype: int
+        """
+        ans=employee.importance[id]
+        for i in range(len(employees)):
+            if employees.id[i] in employees.surbordinates[id]:
+                ans+=self.getImportance(employees, id):
+        return ans
+
+
+###########以上算法#
+###########以下MAP+递归代码
+class Solution(object):
+    def getImportance(self, employees, id):
+        """
+        :type employees: Employee
+        :type id: int
+        :rtype: int
+        """
+        emap = {e.id: e for e in employees}#find employee with his id
+        def rec(eid):
+            emp=emap[eid]
+            return (emp.importance +
+                    sum(rec(eid) for eid in emp.subordinates))#search sub's importance, sum up with his own
+        return rec(id)

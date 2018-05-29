@@ -1,0 +1,32 @@
+class Solution(object):
+    def rotateString(self, A, B):
+        """
+        :type A: str
+        :type B: str
+        :rtype: bool
+        """
+        if len(A)!=len(B):
+            return False
+        que=[]
+        ddend=[]
+        que.append(A)
+        while que:
+            now=que.pop()
+            if now==B: return True
+            ddend.append(now)
+            next=str(now[1:])+str(now[0])
+            if next not in ddend:
+                que.append(next)
+        return False
+##############以下优化算法##########
+class Solution(object):
+    def rotateString(self, A, B):
+        """
+        :type A: str
+        :type B: str
+        :rtype: bool
+        """
+        if len(A)!=len(B):
+            return False
+        whole=A+A
+        return (True if B in whole else False)

@@ -1,0 +1,16 @@
+import collections
+class Solution(object):
+    def mostCommonWord(self, paragraph, banned):
+        """
+        :type paragraph: str
+        :type banned: List[str]
+        :rtype: str
+        """
+        count = collections.Counter(
+            word.strip("!?',;.") for word in paragraph.lower().split())
+        best=0
+        for i in count:
+            if count[i]>best and i not in banned:
+                best=count[i]
+                word=i
+        return word

@@ -1,0 +1,15 @@
+class Solution(object):
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        if num<10:
+            return num
+        if num>=10:
+            sum=0
+            num=list(str(num))
+            for i in num:
+                i=int(i)
+                sum+=i
+            return self.addDigits(sum)
