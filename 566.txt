@@ -1,0 +1,25 @@
+class Solution:
+    def matrixReshape(self, nums, r, c):
+        """
+        :type nums: List[List[int]]
+        :type r: int
+        :type c: int
+        :rtype: List[List[int]]
+        """
+        leng=len(nums)
+        width=len(nums[0])
+        if r*c!=leng*width:
+            return nums
+        else:
+            ans_true=[]
+            num_flat=[]
+            for i in range(leng):
+                for j in range(width):
+                    num_flat.append(nums[i][j])
+            for i in range(r):
+                ans=[]
+                for j in range(c):
+                    ans.append(num_flat[i*c+j])
+                ans_true.append(ans)
+            return ans_true
+                    

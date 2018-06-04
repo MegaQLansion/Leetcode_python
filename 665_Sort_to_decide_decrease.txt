@@ -1,0 +1,14 @@
+class Solution(object):
+    def checkPossibility(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        A=nums[:]
+        B=nums[:]
+        for i in range(len(nums)-1):
+            if nums[i]>nums[i+1]:
+                A[i+1]=nums[i]
+                B[i]=nums[i+1]
+                break
+        return A==sorted(A) or B==sorted(B)

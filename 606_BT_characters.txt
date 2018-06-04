@@ -1,0 +1,13 @@
+class Solution:
+    def tree2str(self, t):
+        """
+        :type t: TreeNode
+        :rtype: str
+        """
+        def jiakuohao(t):
+            return str(t.val)+'('+jiakuohao(t.left)+')'+'('+jiakuohao(t.right)+')' if t else ''
+        res=jiakuohao(t)
+        res = res.replace('()()', '')
+        res = res.replace('())', ')')
+        res = res.replace(')()',')')
+        return res

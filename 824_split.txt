@@ -1,0 +1,21 @@
+class Solution:
+    def toGoatLatin(self, S):
+        """
+        :type S: str
+        :rtype: str
+        """
+        S_split=S.split(' ')
+        vowel=['a', 'e', 'i', 'o', 'u','A','E','I','O','U']
+        aa=str()
+        ans=str()
+        for i in range(len(S_split)):
+            if  S_split[i][0] in vowel:
+                S_split[i]= S_split[i]+('ma')
+            else:
+                S_split[i]+=str(S_split[i][0])
+                S_split[i]=S_split[i][1:]
+                S_split[i]= S_split[i]+('ma')
+            aa+='a'
+            S_split[i]+=str(aa)
+        ans=' '.join(S_split[:])
+        return ans

@@ -1,0 +1,24 @@
+class Solution:
+    def calPoints(self, ops):
+        """
+        :type ops: List[str]
+        :rtype: int
+        """
+        suma=0
+        valid=[]
+        for i in range(len(ops)):
+            if ops[i]=='C':
+                a=valid.pop()
+                suma=suma-a
+            elif ops[i]=='D':
+                valid.append(valid[len(valid)-1]*2)
+                suma+=valid[len(valid)-1]
+            elif ops[i]=='+':
+                valid.append(valid[len(valid)-1]+valid[len(valid)-2])
+                suma+=valid[len(valid)-1]
+            else:
+                i=int(ops[i])
+                valid.append(i)
+                suma+=valid[len(valid)-1]
+        return suma
+                

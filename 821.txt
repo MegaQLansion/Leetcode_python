@@ -1,0 +1,24 @@
+class Solution(object):
+    def shortestToChar(self, S, C):
+        """
+        :type S: str
+        :type C: str
+        :rtype: List[int]
+        """
+        Slist=list(str(S))
+        indx=-len(Slist)
+        left=[]
+        right=[]
+        for s in range(len(Slist)):
+            if Slist[s] == C:
+                indx=s     
+            left.append(s-indx)
+        indx=2*len(Slist)-1
+        for r in range(len(Slist)-1,-1,-1):
+            if Slist[r] == C:
+                indx=r
+            right.append(indx-r)
+        for s in range(len(Slist)):
+            left[s]=min(left[s],right[len(Slist)-1-s])
+        return left
+                

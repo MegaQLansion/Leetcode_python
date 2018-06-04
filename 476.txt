@@ -1,0 +1,15 @@
+class Solution(object):
+    def findComplement(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        binary=str()
+        bin_num=bin(num)
+        bin_num=list(str(bin_num))
+        for i in range(2,len(bin_num)):
+            bin_num[i]=int(bin_num[i])
+            bin_num[i]=1-bin_num[i]
+            binary+=str(bin_num[i])
+        return int(binary,2)    
+        

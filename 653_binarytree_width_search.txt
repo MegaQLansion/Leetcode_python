@@ -1,0 +1,20 @@
+class Solution:
+    def findTarget(self, root, k):
+        """
+        :type root: TreeNode
+        :type k: int
+        :rtype: bool
+        """
+        tar=[]
+        que=[]
+        que.append(root)
+        while que:
+            now=que.pop()
+            if now.val in tar:  return True
+            tar.append(k-now.val)
+            if now.left :
+                que.append(now.left)
+            if now.right:
+                que.append(now.right)
+        return False
+        

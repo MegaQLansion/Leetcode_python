@@ -1,0 +1,27 @@
+class Solution:
+    def findTheDifference(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        for i in t:
+            if not i in s or t.count(i)!=s.count(i):
+                return i
+        
+
+
+
+
+import collections
+
+class Solution:
+    def findTheDifference(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        return list(collections.Counter(t) - collections.Counter(s))[0]     #'-' means find difference
+        
+

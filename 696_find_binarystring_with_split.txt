@@ -1,0 +1,33 @@
+class Solution:
+    def countBinarySubstrings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        zs=[]
+        os=[]
+        wh=[]
+        ans=0
+        s_split=s.split('1')
+        s_splits=s.split('0')
+        for i in range(len(s_split)):
+            if len(s_split[i])!=0:
+                zs.append(len(s_split[i]))
+        for i in range(len(s_splits)):
+            if len(s_splits[i])!=0:
+                os.append(len(s_splits[i]))
+        if s[0]=='0':
+            for i in range(len(zs)+len(os)):
+                if i%2==0:
+                    wh.append(zs[int(i/2)])
+                else:
+                    wh.append(os[int(i/2)])
+        else:
+            for i in range(len(zs)+len(os)):
+                if i%2==0:
+                    wh.append(os[int(i/2)])
+                else:
+                    wh.append(zs[int(i/2)])
+        for i in range(len(wh)-1):
+            ans+=min(wh[i],wh[i+1])
+        return ans

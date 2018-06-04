@@ -1,0 +1,14 @@
+class Solution:
+    def findDisappearedNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        if len(nums)==0:
+            return nums
+        else:
+            tar=set(range(1,len(nums)+1))
+            nums=set(nums[:])
+            tar-=nums
+            return list(tar)
+

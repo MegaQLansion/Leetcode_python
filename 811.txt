@@ -1,0 +1,16 @@
+class Solution(object):
+    def subdomainVisits(self, cpdomains):
+        """
+        :type cpdomains: List[str]
+        :rtype: List[str]
+        """
+        dicti=collections.Counter()
+        for s in cpdomains:
+            count,domain=s.split()
+            count=int(count)
+            frags=domain.split('.')
+            for i in range(len(frags)):
+                dicti['.'.join(frags[i:])]+=count
+        return ["{} {}".format(a,b) for b,a in dicti.items()]
+
+    

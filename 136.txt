@@ -1,0 +1,25 @@
+class Solution:
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        sg=[]
+        for i in nums:
+            if i not in sg:
+                sg.append(i)
+            else:
+                sg.remove(i)
+        return sg.pop()
+
+
+class Solution:
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        res=0
+        for i in nums:
+            res^=i
+        return res

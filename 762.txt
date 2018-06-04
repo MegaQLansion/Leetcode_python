@@ -1,0 +1,30 @@
+class Solution:
+    def countPrimeSetBits(self, L, R):
+        """
+        :type L: int
+        :type R: int
+        :rtype: int
+        """
+        ans=0
+        prime=[2,3]
+        num=[]
+        for i in range(1,5):
+            num.append(6*i-1)
+            num.append(6*i+1)
+        for nu in num:
+            mark=0
+            top=math.floor(math.sqrt(nu))
+            for j in range(2,top+1):
+                if nu%j==0:
+                    mark=1
+            if mark==0:
+                prime.append(nu)
+        for i in range(L,R+1):
+            bi=bin(i)
+            count=0
+            for j in range(2,len(bi)):
+                if bi[j]=='1':
+                    count+=1
+            if count in prime:
+                ans+=1
+        return ans
